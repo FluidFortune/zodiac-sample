@@ -724,10 +724,6 @@ body {
 
   .site-nav {
     display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
     z-index: 99;
     border-bottom: 2px solid var(--red);
   }
