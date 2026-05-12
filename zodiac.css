@@ -745,8 +745,8 @@ body {
   }
 
   .article-sidebar {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 10px;
   }
 
@@ -756,7 +756,7 @@ body {
   }
 
   .victims-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   .page-content { padding: 20px 16px 40px; }
