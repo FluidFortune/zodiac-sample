@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zodiackiller.com — Rebuild Proposal</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1814;
+    --ink-2: #3d3a34;
+    --ink-3: #6b6760;
+    --ink-4: #9b9890;
+    --paper: #f5f2eb;
+    --paper-2: #ede9e0;
+    --paper-3: #e2ddd3;
+    --red: #8b1a1a;
+    --red-light: #c0392b;
+    --red-pale: #f9eded;
+    --amber: #7a4e1a;
+    --amber-pale: #fdf4e3;
+    --blue: #1a3a5c;
+    --blue-pale: #eaf0f7;
+    --green: #1a4a2e;
+    --green-pale: #eaf4ee;
+    --border: rgba(26,24,20,0.12);
+    --border-strong: rgba(26,24,20,0.25);
+    --serif: 'Playfair Display', Georgia, serif;
+    --body: 'Source Serif 4', Georgia, serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Cover ── */
+  .cover {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 60px 70px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      rgba(245,242,235,0.04) 39px,
+      rgba(245,242,235,0.04) 40px
+    );
+    pointer-events: none;
+  }
+
+  .cover-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+    margin-bottom: 28px;
+  }
+
+  .cover h1 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--paper);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .cover h1 span {
+    color: var(--red-light);
+  }
+
+  .cover-sub {
+    font-family: var(--body);
+    font-size: 19px;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(245,242,235,0.7);
+    margin-bottom: 48px;
+    max-width: 560px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .cover-meta-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+  }
+
+  .cover-meta-value {
+    font-family: var(--body);
+    font-size: 15px;
+    color: rgba(245,242,235,0.85);
+  }
+
+  .cover-rule {
+    width: 48px;
+    height: 2px;
+    background: var(--red-light);
+    margin-bottom: 32px;
+  }
+
+  /* ── Layout ── */
+  .page {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 64px 48px;
+  }
+
+  @media (max-width: 640px) {
+    .cover { padding: 48px 28px 48px; }
+    .page { padding: 40px 24px; }
+  }
+
+  /* ── Section headers ── */
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 12px;
+    margin-top: 32px;
+  }
+
+  p {
+    color: var(--ink-2);
+    margin-bottom: 18px;
+    font-weight: 300;
+  }
+
+  p strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 56px 0;
+  }
+
+  /* ── Stat strip ── */
+  .stat-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 32px 0;
+  }
+
+  .stat {
+    background: var(--paper);
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+  }
+
+  .stat-sub {
+    font-size: 12px;
+    color: var(--ink-3);
+    font-style: italic;
+  }
+
+  /* ── Two-col generations ── */
+  .gen-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 32px 0;
+  }
+
+  @media (max-width: 600px) {
+    .gen-grid { grid-template-columns: 1fr; }
+  }
+
+  .gen-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .gen-card-header {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .gen-card-header.gen1 { background: var(--amber-pale); }
+  .gen-card-header.gen2 { background: var(--blue-pale); }
+
+  .gen-card-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .gen-card-title.gen1 { color: var(--amber); }
+  .gen-card-title.gen2 { color: var(--blue); }
+
+  .gen-card-sub {
+    font-size: 12px;
+    color: var(--ink-3);
+    margin-top: 2px;
+  }
+
+  .gen-card-body {
+    padding: 14px 18px;
+    background: var(--paper);
+  }
+
+  .gen-row {
+    display: flex;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--ink-2);
+    padding: 4px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+    font-weight: 300;
+  }
+
+  .gen-row:last-child { border-bottom: none; }
+
+  .gen-row-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-4);
+    min-width: 58px;
+    padding-top: 2px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .gen-insight {
+    margin-top: 12px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-style: italic;
+    color: var(--ink-2);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .gen-insight.gen1 { background: var(--amber-pale); border-left: 3px solid var(--amber); }
+  .gen-insight.gen2 { background: var(--blue-pale); border-left: 3px solid var(--blue); }
+
+  /* ── Findings ── */
+  .finding {
+    display: flex;
+    gap: 14px;
+    padding: 16px 18px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    align-items: flex-start;
+  }
+
+  .finding.critical { background: var(--red-pale); border: 1px solid rgba(139,26,26,0.15); }
+  .finding.info { background: var(--blue-pale); border: 1px solid rgba(26,58,92,0.12); }
+  .finding.good { background: var(--green-pale); border: 1px solid rgba(26,74,46,0.12); }
+  .finding.discard { background: var(--paper-2); border: 1px solid var(--border); }
+
+  .finding-badge {
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 7px;
+    border-radius: 3px;
+    white-space: nowrap;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .finding.critical .finding-badge { background: var(--red); color: var(--paper); }
+  .finding.info .finding-badge { background: var(--blue); color: var(--paper); }
+  .finding.good .finding-badge { background: var(--green); color: var(--paper); }
+  .finding.discard .finding-badge { background: var(--ink-3); color: var(--paper); }
+
+  .finding-text {
+    font-size: 14px;
+    color: var(--ink-2);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .finding-text strong { color: var(--ink); font-weight: 600; }
+
+  /* ── Pipeline ── */
+  .pipeline {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 32px 0;
+  }
+
+  .pipeline-step {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .pipeline-step:last-child { border-bottom: none; }
+
+  .pipeline-num {
+    background: var(--paper-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink-4);
+    border-right: 1px solid var(--border);
+  }
+
+  .pipeline-content {
+    padding: 16px 20px;
+    background: var(--paper);
+  }
+
+  .pipeline-title {
+    font-family: var(--body);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .pipeline-desc {
+    font-size: 13px;
+    color: var(--ink-3);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  code {
+    font-family: var(--mono);
+    font-size: 12px;
+    background: var(--paper-3);
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: var(--red);
+  }
+
+  /* ── Recommendation box ── */
+  .recommendation {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 10px;
+    padding: 32px 36px;
+    margin: 40px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .recommendation::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      rgba(245,242,235,0.03) 39px,
+      rgba(245,242,235,0.03) 40px
+    );
+    pointer-events: none;
+  }
+
+  .recommendation h3 {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--paper);
+    margin-top: 0;
+    margin-bottom: 14px;
+  }
+
+  .recommendation p {
+    color: rgba(245,242,235,0.75);
+    font-size: 15px;
+    font-weight: 300;
+    margin-bottom: 14px;
+  }
+
+  .recommendation p:last-child { margin-bottom: 0; }
+
+  .recommendation strong { color: var(--paper); font-weight: 600; }
+
+  /* ── Hosting table ── */
+  .hosting-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 24px 0;
+  }
+
+  @media (max-width: 600px) {
+    .hosting-grid { grid-template-columns: 1fr; }
+  }
+
+  .hosting-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .hosting-card.recommended {
+    border-color: var(--green);
+    box-shadow: 0 0 0 1px var(--green);
+  }
+
+  .hosting-card-head {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+    background: var(--paper-2);
+  }
+
+  .hosting-card.recommended .hosting-card-head {
+    background: var(--green-pale);
+  }
+
+  .hosting-card-name {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .hosting-card.recommended .hosting-card-name { color: var(--green); }
+
+  .hosting-rec-badge {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--green);
+    color: var(--paper);
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-left: 8px;
+  }
+
+  .hosting-card-body {
+    padding: 12px 14px;
+    font-size: 12px;
+    color: var(--ink-3);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ── Footer ── */
+  .doc-footer {
+    background: var(--paper-2);
+    border-top: 1px solid var(--border);
+    padding: 32px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: gap;
+    gap: 16px;
+  }
+
+  .doc-footer-left {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-4);
+    letter-spacing: 0.08em;
+  }
+
+  .doc-footer-right {
+    font-size: 13px;
+    color: var(--ink-3);
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  /* ── Run modes ── */
+  .run-modes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 24px 0 32px;
+  }
+
+  @media (max-width: 580px) {
+    .run-modes { grid-template-columns: 1fr; }
+  }
+
+  .run-mode {
+    border-radius: 10px;
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .run-mode.primary {
+    background: var(--ink);
+    border: 1px solid var(--ink);
+  }
+
+  .run-mode.fallback {
+    background: var(--paper-2);
+    border: 1px solid var(--border);
+  }
+
+  .run-mode-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .run-mode.primary .run-mode-label { color: var(--ink-4); }
+  .run-mode.fallback .run-mode-label { color: var(--ink-4); }
+
+  .run-mode-name {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .run-mode.primary .run-mode-name { color: var(--paper); }
+  .run-mode.fallback .run-mode-name { color: var(--ink); }
+
+  .run-mode-desc {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.6;
+    margin-top: 4px;
+  }
+
+  .run-mode.primary .run-mode-desc { color: rgba(245,242,235,0.65); }
+  .run-mode.primary .run-mode-desc em { color: rgba(245,242,235,0.45); font-style: italic; }
+  .run-mode.fallback .run-mode-desc { color: var(--ink-3); }
+
+  /* ── Feature grid (publishing tool) ── */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin: 28px 0 32px;
+  }
+
+  .feature-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 20px 18px;
+    background: var(--paper);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: border-color 0.2s;
+  }
+
+  .feature-card:hover {
+    border-color: var(--border-strong);
+  }
+
+  .feature-icon {
+    font-size: 22px;
+    margin-bottom: 4px;
+    line-height: 1;
+  }
+
+  .feature-title {
+    font-family: var(--body);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+
+  .feature-body {
+    font-size: 13px;
+    color: var(--ink-3);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ── Print ── */
+  @media print {
+    .cover { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .finding, .recommendation, .hosting-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Cover -->
+<div class="cover">
+  <div class="cover-eyebrow">Confidential · Working Document</div>
+  <div class="cover-rule"></div>
+  <h1>Rebuilding<br><span>Zodiackiller.com</span></h1>
+  <p class="cover-sub">A technical analysis and proposed strategy for migrating 25 years of forensic evidence to a fast, mobile-ready archive.</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Prepared for</span>
+      <span class="cover-meta-value">Tom Voigt</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Prepared by</span>
+      <span class="cover-meta-value">Eric / Fluid Fortune</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Date</span>
+      <span class="cover-meta-value">May 2026</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">Archive size</span>
+      <span class="cover-meta-value">419 MB · 2,666 files</span>
+    </div>
+  </div>
+</div>
+
+<!-- Body -->
+<div class="page">
+
+  <!-- Executive Summary -->
+  <div class="section-label">Executive Summary</div>
+  <h2>What we found, and what we can do about it.</h2>
+
+  <p>We downloaded and analyzed the complete zodiackiller.com archive — every file currently sitting on your GoDaddy server. What we found explains exactly why the migration has been so difficult, and also why the fix is more achievable than it might seem.</p>
+
+  <p>The short version: <strong>your actual evidence and research is in excellent shape.</strong> The problem is entirely the software wrapped around it. WordPress and the GoDaddy theme ecosystem have added enormous complexity and fragility to what should be a straightforward archive of documents, images, and text.</p>
+
+  <p>This document explains what we found, what we recommend, and what the rebuilt site would look like — practically and technically.</p>
+
+  <!-- Archive stats -->
+  <div class="stat-strip">
+    <div class="stat">
+      <span class="stat-num">2,666</span>
+      <span class="stat-label">Total files</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">419 MB</span>
+      <span class="stat-label">Archive size</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">1,649</span>
+      <span class="stat-label">Images</span>
+      <span class="stat-sub">JPGs, GIFs, PNGs</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">93%</span>
+      <span class="stat-label">Real content</span>
+      <span class="stat-sub">vs. WP scaffolding</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">12</span>
+      <span class="stat-label">PDFs</span>
+      <span class="stat-sub">154 MB of police records</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">35</span>
+      <span class="stat-label">Audio files</span>
+      <span class="stat-sub">MP3 logs, interviews</span>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- The Problem -->
+  <div class="section-label">The Problem</div>
+  <h2>Two generations of the site, two different problems.</h2>
+
+  <p>Analyzing a cross-section of your pages revealed that zodiackiller.com is not one site — it is two distinct sites living under the same domain, built in completely different ways, neither of which is currently serving visitors well on mobile devices.</p>
+
+  <div class="gen-grid">
+    <div class="gen-card">
+      <div class="gen-card-header gen1">
+        <div class="gen-card-title gen1">Generation 1 — Static HTML</div>
+        <div class="gen-card-sub">1998 – approximately 2018 · hundreds of pages</div>
+      </div>
+      <div class="gen-card-body">
+        <div class="gen-row"><span class="gen-row-label">Files</span><span><code>BombLetter4.html</code>, <code>QOTVH.html</code></span></div>
+        <div class="gen-row"><span class="gen-row-label">Structure</span><span>Raw HTML, tables used for layout</span></div>
+        <div class="gen-row"><span class="gen-row-label">Bloat</span><span>2–65% overhead — mostly lean</span></div>
+        <div class="gen-row"><span class="gen-row-label">Images</span><span>Relative paths — all in <code>images/</code> folder</span></div>
+        <div class="gen-row"><span class="gen-row-label">Pattern</span><span>Many pages = one image (paginated evidence docs)</span></div>
+        <div class="gen-insight gen1">This is where your real content lives. 25 years of evidence, built by hand.</div>
+      </div>
+    </div>
+
+    <div class="gen-card">
+      <div class="gen-card-header gen2">
+        <div class="gen-card-title gen2">Generation 2 — WordPress</div>
+        <div class="gen-card-sub">2020 – present · actively updated</div>
+      </div>
+      <div class="gen-card-body">
+        <div class="gen-row"><span class="gen-row-label">Files</span><span><code>zodiac-killer-victim-paul-stine/</code></span></div>
+        <div class="gen-row"><span class="gen-row-label">Structure</span><span>WordPress + GoDaddy "Go" theme + CoBlocks</span></div>
+        <div class="gen-row"><span class="gen-row-label">Bloat</span><span>91–99.5% of each file is scaffolding</span></div>
+        <div class="gen-row"><span class="gen-row-label">Images</span><span>Hosted in <code>wp-content/uploads/</code></span></div>
+        <div class="gen-row"><span class="gen-row-label">Pattern</span><span>New articles + migration stubs (unfinished)</span></div>
+        <div class="gen-insight gen2">The migration stalled here. Many WP pages say "still getting mobile — original page is here."</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- Key Findings -->
+  <div class="section-label">Key Findings</div>
+  <h2>What the analysis revealed.</h2>
+
+  <p>Examining 17 pages across both generations — including all major victim pages, suspect pages, and a random cross-section — produced four findings that directly shape the rebuild strategy.</p>
+
+  <div class="finding critical">
+    <span class="finding-badge">Critical</span>
+    <p class="finding-text"><strong>The WordPress victim pages are unfinished stubs.</strong> Pages for Paul Stine, Darlene Ferrin, David Faraday, and others literally contain the message "this page is still getting mobile — the original page is here." The WordPress migration was started and stopped. Generation 1 holds the complete, real content for these pages. This is not a problem — it tells us exactly where to focus.</p>
+  </div>
+
+  <div class="finding info">
+    <span class="finding-badge">Structure</span>
+    <p class="finding-text"><strong>Hundreds of pages are paginated evidence galleries.</strong> Files like <code>BombLetter4.html</code>, <code>BatesCrimeScene4.html</code>, and <code>KaneReport1.html</code> are individual pages of multi-page documents — one image per HTML file, with "next page" links. On desktop with a slow 1990s connection, this made sense. Today, each of these sequences should be a single scrollable page with all images stacked vertically. The content is all there; it just needs to be reassembled.</p>
+  </div>
+
+  <div class="finding good">
+    <span class="finding-badge">Opportunity</span>
+    <p class="finding-text"><strong>Structured data is cleanly extractable.</strong> The Zodiac calendar, the suspect index pages, and the Domingos/Edwards victim pages all contain structured information in HTML tables. This data can be extracted and rebuilt as proper, mobile-friendly layouts — sortable, linkable, and readable on any screen size.</p>
+  </div>
+
+  <div class="finding discard">
+    <span class="finding-badge">Discard</span>
+    <p class="finding-text"><strong>The WordPress infrastructure can be discarded entirely.</strong> jQuery, the CoBlocks page builder, the GoDaddy "Go" theme stylesheets, Amazon affiliate banners, and old search box widgets account for the bloat but contain no evidence value. None of this needs to migrate.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- The Plan -->
+  <div class="section-label">The Plan</div>
+  <h2>A four-phase extraction and rebuild pipeline.</h2>
+
+  <p>The rebuild does not require rewriting anything by hand. We build a set of scripts that walk the archive, classify every file, extract the real content, and assemble it into a clean, fast, mobile-ready site. The pipeline has four phases.</p>
+
+  <div class="pipeline">
+    <div class="pipeline-step">
+      <div class="pipeline-num">1</div>
+      <div class="pipeline-content">
+        <div class="pipeline-title">Classify every HTML file</div>
+        <div class="pipeline-desc">A script walks all 654 HTML files and assigns each one a type: WordPress article, WordPress stub (unfinished migration), Generation 1 article, Generation 1 image gallery page, Generation 1 navigation page, or WordPress infrastructure (discard). This gives us a complete map of what we're working with before touching anything.</div>
+      </div>
+    </div>
+    <div class="pipeline-step">
+      <div class="pipeline-num">2</div>
+      <div class="pipeline-content">
+        <div class="pipeline-title">Extract content by type</div>
+        <div class="pipeline-desc">Each type gets its own extraction rule. WordPress articles: pull <code>entry-content</code>, strip the wrapper. Generation 1 articles: strip layout tables, keep text and images. Image gallery sequences: detect the numbering pattern (e.g. <code>BombLetter1</code> through <code>BombLetter12</code>), group them, and assemble into a single scrollable page per document.</div>
+      </div>
+    </div>
+    <div class="pipeline-step">
+      <div class="pipeline-num">3</div>
+      <div class="pipeline-content">
+        <div class="pipeline-title">Resolve and validate all images</div>
+        <div class="pipeline-desc">Generation 1 uses relative image paths (<code>images/filename.gif</code>). WordPress uses absolute paths to <code>wp-content/uploads/</code>. Both exist in the archive. The script verifies every image reference resolves to a real file, flags any broken links, and normalizes all paths for the new structure.</div>
+      </div>
+    </div>
+    <div class="pipeline-step">
+      <div class="pipeline-num">4</div>
+      <div class="pipeline-content">
+        <div class="pipeline-title">Build the site structure</div>
+        <div class="pipeline-desc">All extracted content feeds into a clean, consistent template system: one shared CSS file, section index pages (Victims, Suspects, Evidence, Letters, News), and mobile-first page templates per content type. No WordPress, no plugins, no frameworks — just HTML, CSS, and the evidence itself.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- What it will look like -->
+  <div class="section-label">The Result</div>
+  <h2>What the rebuilt site achieves.</h2>
+
+  <p>The rebuilt zodiackiller.com is not a redesign — it is a restoration and upgrade. The goal is a site that works as well in 2026 as it did in its heyday, on the devices people actually use today.</p>
+
+  <h3>For visitors</h3>
+  <p>Every page loads in under a second. The cipher images are sharp and legible on a phone screen. The police reports and audio files are accessible without plugins. The suspect and victim pages are navigable with a thumb. The evidence reads the way it was meant to be read.</p>
+
+  <h3>For Tom</h3>
+  <p><strong>The archive section</strong> — the decades of historical material — requires no ongoing maintenance. It is published once and stays. No WordPress updates to apply. No plugin conflicts to resolve. No GoDaddy theme breaking on the next browser release. It simply serves.</p>
+  <p><strong>The active section</strong> — new articles, Today in Zodiac History, ongoing research — gets a simple, clean publishing workflow that Tom controls without needing a developer. The exact format of this tool is a conversation to have once the archive is stable.</p>
+
+  <hr class="section-divider">
+
+  <!-- Hosting -->
+  <div class="section-label">Hosting</div>
+  <h2>Where the rebuilt site lives.</h2>
+
+  <p>The rebuild will produce plain HTML files — the simplest possible thing to host. This opens up several options, each with different tradeoffs. Zodiackiller.com gets real traffic spikes (documentaries, podcasts, news hooks), so resilience under load matters.</p>
+
+  <div class="hosting-grid">
+    <div class="hosting-card">
+      <div class="hosting-card-head">
+        <div class="hosting-card-name">GoDaddy (current host)</div>
+      </div>
+      <div class="hosting-card-body">
+        Replace WordPress with flat HTML files on existing account. Zero migration hassle. Keeps current domain setup. Performance better than WordPress but GoDaddy shared hosting has limits under heavy traffic.
+      </div>
+    </div>
+    <div class="hosting-card">
+      <div class="hosting-card-head">
+        <div class="hosting-card-name">GitHub Pages</div>
+      </div>
+      <div class="hosting-card-body">
+        Free, version-controlled, easy to update. Every change is tracked and reversible. Soft bandwidth limits (~100 GB/month) — risky during a major news spike. Fine for normal traffic.
+      </div>
+    </div>
+    <div class="hosting-card recommended">
+      <div class="hosting-card-head">
+        <div class="hosting-card-name">Cloudflare Pages <span class="hosting-rec-badge">Recommended</span></div>
+      </div>
+      <div class="hosting-card-body">
+        Free tier. Unlimited bandwidth. Global CDN built in — pages load fast worldwide. Deploys automatically from GitHub. Traffic spikes are absorbed without a second thought. The right infrastructure for a site that gets hit hard without warning.
+      </div>
+    </div>
+  </div>
+
+  <p>Our recommendation: <strong>GitHub as the repository</strong> (version control, edit history, Tom can see every change) with <strong>Cloudflare Pages as the delivery layer</strong> (free, fast, spike-proof). The two work together seamlessly. Tom pushes an update to GitHub; Cloudflare deploys it automatically within seconds.</p>
+
+  <!-- Closing recommendation -->
+  <div class="recommendation">
+    <h3>The bottom line</h3>
+    <p>Twenty-five years of irreplaceable forensic research should not be held hostage by a WordPress installation and a GoDaddy theme. The evidence is in good shape. The images are intact. The PDFs and audio files are all there.</p>
+    <p>The fix is not complicated — it is just methodical. We extract the real content from the scaffolding, rebuild it in clean HTML, and publish it somewhere fast and resilient. The archive becomes permanent, stable, and accessible on any device.</p>
+    <p><strong>The work to get there is scripted and systematic.</strong> We are not rebuilding the site by hand — we are building tools that do the rebuilding for us, so the result is consistent across all 600+ pages. Once the pipeline runs, the archive is done. From there, the only ongoing work is Tom's new content, handled by a simple publishing tool built around how he actually works.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- Publishing Tool -->
+  <div class="section-label">The Publishing Tool</div>
+  <h2>How Tom creates and updates pages going forward.</h2>
+
+  <p>The archive is the foundation — but zodiackiller.com is a living site. Tom publishes new articles, updates suspect pages as evidence develops, runs the Today in Zodiac History series, and adds new research as it emerges. The rebuild needs to support that ongoing work without requiring a developer every time something changes.</p>
+
+  <p>The tool we build for this is called the <strong>Zodiac Publisher</strong> — a dedicated editor that runs on Tom's computer and publishes directly to the live site. No WordPress. No GoDaddy control panel. No FTP client. Just a clean writing environment designed specifically for the way this site works.</p>
+
+  <h3>How Tom runs it</h3>
+
+  <div class="run-modes">
+    <div class="run-mode primary">
+      <div class="run-mode-label">Primary</div>
+      <div class="run-mode-name">Desktop app</div>
+      <div class="run-mode-desc">Built on the Fluid Fortune Trojan Horse framework — a native desktop wrapper that turns the editor into a proper Mac application. Double-click to open, no browser required, no accidental tab closing. Feels like a real app because it is one. <em>Dependent on resolving a macOS packaging issue currently under review — handled separately.</em></div>
+    </div>
+    <div class="run-mode fallback">
+      <div class="run-mode-label">Fallback</div>
+      <div class="run-mode-name">Open in Chrome</div>
+      <div class="run-mode-desc">The Zodiac Publisher is a single HTML file. If the desktop app isn't ready or isn't behaving, Tom drags the file into Chrome and gets the identical experience — same interface, same features, same Publish button. No degraded mode. No missing features. Same file, two ways to run it.</div>
+    </div>
+  </div>
+
+  <h3>What the editor looks like</h3>
+  <p>On the left: a list of every page on the site, organized by section — Victims, Suspects, Evidence, Letters, News, Today in Zodiac History. On the right: a simple editor. Tom clicks a page to edit it, or clicks New Page to start fresh. When he's done, he clicks Publish. The page goes live within seconds.</p>
+
+  <p>No accounts to manage. No plugins to update. No theme breaking after a WordPress update. The tool is a single file that lives on Tom's Desktop and works entirely offline until the moment he publishes.</p>
+
+  <h3>What it can do</h3>
+
+  <div class="feature-grid">
+
+    <div class="feature-card">
+      <div class="feature-icon">✍️</div>
+      <div class="feature-title">Write and edit articles</div>
+      <div class="feature-body">A clean writing surface with basic formatting — headings, bold, italic, blockquotes for witness statements, and code blocks for cipher text. Nothing more than what the site actually uses. No bloated toolbar.</div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🖼</div>
+      <div class="feature-title">Add images and evidence</div>
+      <div class="feature-body">Drag an image into the editor and it's embedded. The tool handles sizing and mobile formatting automatically. Crime scene photos, suspect images, cipher scans — all handled the same way.</div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">📄</div>
+      <div class="feature-title">Attach PDFs and audio</div>
+      <div class="feature-body">Police reports, court documents, and MP3 interview recordings attach with a single click. They appear on the page as readable, accessible links — no plugins required on the visitor's end.</div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">📅</div>
+      <div class="feature-title">Today in Zodiac History</div>
+      <div class="feature-body">A dedicated view for the daily history series. Tom sees the calendar, clicks a date, writes the entry, and publishes. Past entries are all there, editable any time. The series lives as a proper navigable archive on the site.</div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🔗</div>
+      <div class="feature-title">Update existing pages</div>
+      <div class="feature-body">Any page on the site — including the migrated archive pages — is editable. If new evidence surfaces about a suspect, Tom opens that suspect's page, makes the change, and publishes. The update is live in seconds.</div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">👁</div>
+      <div class="feature-title">Preview before publishing</div>
+      <div class="feature-body">A preview button shows exactly how the page will look on both desktop and mobile before anything goes live. What Tom sees is what visitors get.</div>
+    </div>
+
+  </div>
+
+  <h3>What it does not do</h3>
+  <p>The Zodiac Publisher is deliberately narrow in scope. It does not try to be a general-purpose CMS. It has no user accounts, no comment system, no analytics dashboard, no social sharing buttons, no newsletter integration. Every one of those features would add complexity that could break. The tool does exactly what zodiackiller.com needs and nothing else.</p>
+
+  <h3>How publishing actually works</h3>
+  <p>When Tom clicks Publish, the tool converts his writing into a clean HTML file using the same template as the rest of the site, then pushes it to GitHub — the version-controlled repository where the site lives. Cloudflare Pages detects the new file and deploys it to the live site automatically. The whole process takes about ten seconds.</p>
+
+  <p>Every published page is saved in GitHub with a complete history. If Tom publishes something and wants to revert it, the previous version is one click away. Nothing is ever truly lost.</p>
+
+  <div class="recommendation">
+    <h3>The practical difference for Tom</h3>
+    <p>Right now, publishing a new article on zodiackiller.com means navigating WordPress's block editor, fighting with the GoDaddy theme, hoping images resize correctly on mobile, and waiting for a slow page builder to render. It's friction at every step.</p>
+    <p>With the Zodiac Publisher: <strong>open the tool, write the article, add images, click Publish.</strong> The site handles the rest. Mobile formatting is automatic. Images are optimized automatically. The page matches the rest of the site automatically.</p>
+    <p>The goal is a tool that gets out of Tom's way and lets him focus on the research — which is the part that actually matters.</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section-label">Next Steps</div>
+  <h2>What happens after this conversation.</h2>
+
+  <p>This proposal is the starting point. The immediate next step — already underway — is building the Phase 1 classifier script that categorizes every HTML file in the archive. Once that runs, we will have a precise inventory of exactly what needs to be extracted, grouped, and rebuilt.</p>
+
+  <p>Nothing on the live site changes until Tom is satisfied with the rebuild. The work happens locally, on a copy of the archive, and Tom sees the result before anything goes live. The existing site stays up and unchanged throughout.</p>
+
+  <p>Questions, corrections, and pushback are welcome. This is a working document, not a final blueprint.</p>
+
+</div>
+
+<!-- Footer -->
+<div class="doc-footer">
+  <div class="doc-footer-left">Zodiackiller.com Rebuild Proposal · May 2026 · Confidential</div>
+  <div class="doc-footer-right">Prepared by Eric / Fluid Fortune for Tom Voigt</div>
+</div>
+
+</body>
+</html>
